@@ -1,17 +1,19 @@
 {
-    "name": "laravel/installer",
-    "description": "Laravel application installer.",
-    "keywords": ["laravel"],
+    "name": "troubadour/installer",
+    "description": "Troubadour application installer.",
+    "keywords": ["troubadour", "laravel"],
     "license": "MIT",
     "authors": [
         {
             "name": "Taylor Otwell",
-            "email": "taylorotwell@gmail.com"
+            "email": "taylorotwell@gmail.com",
+            "name": "Leonardo Vilarinho",
+            "email": "leonardo-i@outlook.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Laravel\\Installer\\Console\\": "src/"
+            "Troubadour\\Installer\\Console\\": "src/"
         }
     },
     "require": {
@@ -21,6 +23,6 @@
         "symfony/process": "~2.3|~3.0"
     },
     "bin": [
-        "laravel"
+        "troubadour"
     ]
 }

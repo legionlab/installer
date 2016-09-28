@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-wget https://github.com/laravel/laravel/archive/master.zip
+wget https://github.com/legionlab/troubadour/archive/master.zip
 unzip master.zip -d working
-cd working/laravel-master
+cd working/troubadour-master
 composer install
-zip -ry ../../laravel-craft.zip .
+zip -ry ../../troubadour-craft.zip .
 cd ../..
-mv laravel-craft.zip public/laravel-craft.zip
+mv troubadour-craft.zip public/troubadour-craft.zip
 rm -rf working
 rm master.zip

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Installer\Console;
+namespace Troubadour\Installer\Console;
 
 use ZipArchive;
 use RuntimeException;
@@ -23,10 +23,10 @@ class NewCommand extends Command
     {
         $this
             ->setName('new')
-            ->setDescription('Create a new Laravel application.')
+            ->setDescription('Create a new Troubadour application.')
             ->addArgument('name', InputArgument::OPTIONAL)
             ->addOption('dev', null, InputOption::VALUE_NONE, 'Installs the latest "development" release')
-            ->addOption('5.2', null, InputOption::VALUE_NONE, 'Installs the "5.2" release');
+            ->addOption('2.0.5', null, InputOption::VALUE_NONE, 'Installs the "2.0.5" release');
     }
 
     /**
@@ -103,7 +103,7 @@ class NewCommand extends Command
      */
     protected function makeFilename()
     {
-        return getcwd().'/laravel_'.md5(time().uniqid()).'.zip';
+        return getcwd().'/troubadour_'.md5(time().uniqid()).'.zip';
     }
 
     /**
@@ -116,18 +116,15 @@ class NewCommand extends Command
     protected function download($zipFile, $version = 'master')
     {
         switch ($version) {
-            case 'develop':
-                $filename = 'latest-develop.zip';
-                break;
             case 'master':
-                $filename = 'latest.zip';
+                $filename = 'master.zip';
                 break;
-            case '5.2':
-                $filename = 'latest-52.zip';
+            case '2.0.5':
+                $filename = '2.0.5.zip';
                 break;
         }
 
-        $response = (new Client)->get('http://cabinet.laravel.com/'.$filename);
+        $response = (new Client)->get('https://github.com/legionlab/troubadour/archive/'.$filename);
 
         file_put_contents($zipFile, $response->getBody());
 
@@ -181,8 +178,8 @@ class NewCommand extends Command
             return 'develop';
         }
 
-        if ($input->getOption('5.2')) {
-            return '5.2';
+        if ($input->getOption('2.0.5')) {
+            return '2.0.5';
         }
 
         return 'master';
