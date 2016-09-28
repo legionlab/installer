@@ -1,7 +1,7 @@
 {
     "name": "troubadour/installer",
     "description": "Troubadour application installer.",
-    "keywords": ["troubadour", "laravel"],
+    "keywords": ["troubadour"],
     "license": "MIT",
     "authors": [
         {
