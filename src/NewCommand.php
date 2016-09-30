@@ -26,7 +26,7 @@ class NewCommand extends Command
             ->setDescription('Create a new Troubadour application.')
             ->addArgument('name', InputArgument::OPTIONAL)
             ->addOption('dev', null, InputOption::VALUE_NONE, 'Installs the latest "development" release')
-            ->addOption('2.0.6', null, InputOption::VALUE_NONE, 'Installs the "2.0.6" release');
+            ->addOption('2.0.7', null, InputOption::VALUE_NONE, 'Installs the "2.0.7" release');
     }
 
     /**
@@ -124,8 +124,8 @@ class NewCommand extends Command
             case 'master':
                 $filename = 'master.zip';
                 break;
-            case '2.0.6':
-                $filename = '2.0.6.zip';
+            case '2.0.7':
+                $filename = '2.0.7.zip';
                 break;
         }
 
@@ -183,8 +183,8 @@ class NewCommand extends Command
             return 'develop';
         }
 
-        if ($input->getOption('2.0.6')) {
-            return '2.0.6';
+        if ($input->getOption('2.0.7')) {
+            return '2.0.7';
         }
 
         return 'master';
