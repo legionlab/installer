@@ -85,7 +85,7 @@ class NewCommand extends Command
         });
 
         $output->writeln('<comment>Hey Ho!! Application ready! Build something amazing.</comment>');
-	$output->writeln('<comment>Run: cd {$input->getArgument('name')} && composer install</comment>');
+	$output->writeln("<comment>Run: cd {$input->getArgument('name')} && composer install</comment>");
     }
 
     /**
