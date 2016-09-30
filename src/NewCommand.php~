@@ -84,8 +84,7 @@ class NewCommand extends Command
             $output->write($line);
         });
 
-        $output->writeln('<comment>Hey Ho!! Application ready! Build something amazing.</comment>');
-	$output->writeln('<comment>Run: cd {$input->getArgument('name')} && composer install</comment>');
+        $output->writeln('<comment>Application ready! Build something amazing.</comment>');
     }
 
     /**
@@ -97,7 +96,7 @@ class NewCommand extends Command
     protected function verifyApplicationDoesntExist($directory, OutputInterface $output)
     {
         if ((is_dir($directory) || is_file($directory)) && $directory != getcwd()) {
-            throw new RuntimeException('Whoooshh, application already exists!');
+            throw new RuntimeException('Application already exists!');
         }
     }
 
