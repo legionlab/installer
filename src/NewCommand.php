@@ -26,7 +26,7 @@ class NewCommand extends Command
             ->setDescription('Create a new Troubadour application.')
             ->addArgument('name', InputArgument::OPTIONAL)
             ->addOption('dev', null, InputOption::VALUE_NONE, 'Installs the latest "development" release')
-            ->addOption('2.0.7', null, InputOption::VALUE_NONE, 'Installs the "2.0.7" release');
+            ->addOption('2.1.0', null, InputOption::VALUE_NONE, 'Installs the "2.1.0" release');
     }
 
     /**
@@ -115,7 +115,7 @@ class NewCommand extends Command
      * Download the temporary Zip to the given file.
      *
      * @param  string  $zipFile
-     * @param  string  $version
+     * @param  string  $versions
      * @return $this
      */
     protected function download($zipFile, $version = 'master')
@@ -124,8 +124,8 @@ class NewCommand extends Command
             case 'master':
                 $filename = 'master.zip';
                 break;
-            case '2.0.7':
-                $filename = '2.0.7.zip';
+            case '2.1.0':
+                $filename = '2.1.0.zip';
                 break;
         }
 
@@ -183,8 +183,8 @@ class NewCommand extends Command
             return 'develop';
         }
 
-        if ($input->getOption('2.0.7')) {
-            return '2.0.7';
+        if ($input->getOption('2.1.0')) {
+            return '2.1.0';
         }
 
         return 'master';
