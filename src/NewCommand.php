@@ -25,6 +25,7 @@ class NewCommand extends Command
             ->setName('new')
             ->setDescription('Create a new Troubadour application.')
             ->addArgument('name', InputArgument::OPTIONAL)
+            ->addArgument('example', InputArgument::OPTIONAL)
             ->addOption('dev', null, InputOption::VALUE_NONE, 'Installs the latest "development" release')
             ->addOption('2.1.0', null, InputOption::VALUE_NONE, 'Installs the "2.1.0" release');
     }
@@ -120,6 +121,12 @@ class NewCommand extends Command
      */
     protected function download($zipFile, $version = 'master')
     {
+        if($input->getArgument('example')) {
+            $link = 'https://github.com/legionlab/troubadour-example/archive/';
+        } else {
+            $link = 'https://github.com/legionlab/troubadour/archive/';
+        }
+
         switch ($version) {
             case 'master':
                 $filename = 'master.zip';
@@ -129,7 +136,7 @@ class NewCommand extends Command
                 break;
         }
 
-        $response = (new Client)->get('https://github.com/legionlab/troubadour/archive/'.$filename);
+        $response = (new Client)->get($link.$filename);
 
         file_put_contents($zipFile, $response->getBody());
 
