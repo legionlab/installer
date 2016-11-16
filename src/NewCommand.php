@@ -14,6 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class NewCommand extends Command
 {
+    private $input;
     /**
      * Configure the command options.
      *
@@ -39,6 +40,7 @@ class NewCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->input = $input;
         if (! class_exists('ZipArchive')) {
             throw new RuntimeException('The Zip PHP extension is not installed. Please install it and try again.');
         }
@@ -121,7 +123,7 @@ class NewCommand extends Command
      */
     protected function download($zipFile, $version = 'master')
     {
-        if($input->getArgument('example')) {
+        if($this->input->getArgument('example')) {
             $link = 'https://github.com/legionlab/troubadour-example/archive/';
         } else {
             $link = 'https://github.com/legionlab/troubadour/archive/';
